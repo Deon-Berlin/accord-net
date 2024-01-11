@@ -15,6 +15,9 @@ namespace Accord.Imaging
     using AForge.Math;
     using Accord;
     using Accord.Math;
+#if NET8_0_OR_GREATER
+    using Range = Accord.Range;
+#endif
 
     /// <summary>
     /// Gather statistics about image in YCbCr color space.

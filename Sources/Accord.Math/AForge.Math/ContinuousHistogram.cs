@@ -11,6 +11,9 @@ namespace Accord.Math
     using System;
     using Accord;
     using Accord.Compat;
+#if NET8_0_OR_GREATER
+    using Range = Accord.Range;
+#endif
 
     /// <summary>
     /// Histogram for continuous random values.

@@ -13,6 +13,9 @@ namespace Accord.Imaging.Filters
     using System.Drawing.Imaging;
     using AForge;
     using Accord;
+#if NET8_0_OR_GREATER
+    using Range = Accord.Range;
+#endif
 
     /// <summary>
     /// Color filtering in YCbCr color space.

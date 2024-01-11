@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Accord.Statistics</AssemblyName>
+    <RootNamespace>Accord.Statistics</RootNamespace>
+    <TargetFrameworks>netstandard2.0;netstandard1.4;net47;net8.0</TargetFrameworks>
+    <NoWarn Condition="'$(TargetFramework)'=='net8.0'">$(NoWarn);SYSLIB0011</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="$(SolutionDir)Accord.NET (NET8).targets" />
+
+  <ItemGroup>
+    <Compile Remove="Properties.VSCode\**" />
+    <EmbeddedResource Remove="Properties.VSCode\**" />
+    <None Remove="Properties.VSCode\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Accord.Core\Accord.Core (NET8).csproj" />
+    <ProjectReference Include="..\Accord.Math.Core\Accord.Math.Core (NET8).csproj" />
+    <ProjectReference Include="..\Accord.Math\Accord.Math (NET8).csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.4'">
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+  </ItemGroup>
+
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard1.4'">
+      <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)' == 'net8.0'">
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+</Project>

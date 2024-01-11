@@ -45,7 +45,11 @@ namespace Accord.Statistics.Models.Fields.Learning
     /// 
     public class HiddenConjugateGradientLearning<T> : BaseHiddenGradientOptimizationLearning<T, ConjugateGradient>,
         ISupervisedLearning<HiddenConditionalRandomField<T>, T[], int>, IParallel,
-        IHiddenConditionalRandomFieldLearning<T>, IConvergenceLearning, IDisposable
+        IHiddenConditionalRandomFieldLearning<T>, IConvergenceLearning
+#if !NET8_0_OR_GREATER
+        , IDisposable
+#endif
+        
     {
 
         /// <summary>

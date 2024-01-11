@@ -155,7 +155,9 @@ namespace Accord.Imaging.Filters
             var dst0 = (byte*)destination.ImageData.ToPointer();
 
             IntPtr delPtr = IntPtr.Zero;
+#pragma warning disable SYSLIB0004
             RuntimeHelpers.PrepareConstrainedRegions();
+#pragma warning restore SYSLIB0004
             try
             {
                 delPtr = Marshal.AllocHGlobal(delSize);

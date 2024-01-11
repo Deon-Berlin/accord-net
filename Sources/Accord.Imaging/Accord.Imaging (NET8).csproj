@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Accord.Imaging</AssemblyName>
+    <RootNamespace>Accord.Imaging</RootNamespace>
+    <TargetFrameworks>netstandard2.0;net47;net8.0-Windows</TargetFrameworks>
+    <NoWarn Condition="'$(TargetFramework)'=='net8.0'">$(NoWarn);SYSLIB0004;CS0618</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="$(SolutionDir)Accord.NET (NET8).targets" />
+  
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard1.4'">
+      <ItemGroup>
+        <PackageReference Include="System.Drawing.Common" Version="4.7.3" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)' == 'net8.0-Windows'">
+      <ItemGroup>
+        <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="System.Drawing" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Accord.Core\Accord.Core (NET8).csproj" />
+    <ProjectReference Include="..\Accord.Math\Accord.Math (NET8).csproj" />
+    <ProjectReference Include="..\Accord.Statistics\Accord.Statistics (NET8).csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -28,6 +28,9 @@ namespace Accord.Imaging.Converters
     using Accord.Math;
     using System;
     using System.Numerics;
+#if NET8_0_OR_GREATER
+    using Vector = Accord.Math.Vector;
+#endif
 
     /// <summary>
     ///   Bitmap to multidimensional matrix converter.

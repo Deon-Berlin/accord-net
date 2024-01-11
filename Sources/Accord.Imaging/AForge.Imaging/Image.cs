@@ -558,7 +558,7 @@ namespace Accord.Imaging
         /// <param name="localPath">The local directory where the file should be stored.</param>
         /// 
         /// <returns>Returns loaded bitmap.</returns>
-        /// 
+        ///
         public static Bitmap FromUrl(string url, string localPath)
         {
             string name = System.IO.Path.GetFileName(url);

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Accord</AssemblyName>
+    <RootNamespace>Accord</RootNamespace>
+    <TargetFrameworks>netstandard2.0;netstandard1.4;net47;net8.0</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS8500</NoWarn>
+	<NoWarn Condition="'$(TargetFramework)'=='net8.0'">$(NoWarn);SYSLIB0011;SYSLIB0014;SYSLIB0050;SYSLIB0051;CS0618;CS8981</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="$(SolutionDir)Accord.NET (NET8).targets" />
+
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard1.4'">
+      <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)' == 'net8.0'">
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup>
+    <Compile Remove="Properties.VSCode\**" />
+    <EmbeddedResource Remove="Properties.VSCode\**" />
+    <None Remove="Properties.VSCode\**" />
+  </ItemGroup>
+
+</Project>
